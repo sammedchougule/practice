@@ -1,18 +1,18 @@
-// HTTP server
-const express = require('express');
+// import dependencies
+const express = require("express")
+// Create a new express application object
 const app = express()
 
-const port = 3001
+//middleware
+app.use("/static", express.static("static"))
 
-app.get('/route-handler', (req, res) => {
-    res.json({
-        name: "sammed chougule",
-        age: 28,
-        gender: 'male',
-        nation: 'india'
-    })
-});
+app.use("/static", express.static("cheese"))
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+//Routes
+app.get("/test", (req, res) => {
+    res.send("Hello")
+})
+// run your application, so it listens on port 4444
+app.listen(4444, () => {
+    console.log("Server is Listening on port 4444")
 })
